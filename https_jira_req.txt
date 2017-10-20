@@ -1,0 +1,12 @@
+
+https://jira.charter.com/rest/api/latest/search?jql=((resolution != Incomplete OR resolution != Unresolved) AND "Date Received" != startOfMonth())
+
+https://jira.charter.com/rest/api/latest/search?jql=((resolution%20!=%20Incomplete%20OR%20resolution%20!=%20Unresolved)%20AND%20%22Date%20Received%22%20%3E=%20startOfMonth())
+---------
+project = NGV ORDER BY createdDate
+
+----------------
+
+
+project in ("Advanced Engineering Environment & Lab Integration")
+

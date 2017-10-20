@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>Use the XMLHttpRequest to get the content of a file.</h2>
+        <p>The content is written in JSON format, and can easily be converted into a JavaScript object.</p>
+        <p id="demo"></p>
+        <script>
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var myObj = JSON.parse(this.responseText);
+                    document.getElementById("demo").innerHTML = myObj.name;
+                }
+            };
+            /*var myJSON = "https://jira.charter.com/rest/api/latest/search?jql=((resolution%20!=%20Incomplete%20OR%20resolution%20!=%20Unresolved)%20AND%20%22Date%20Received%22%20%3E=%20startOfMonth())";*/
+            xmlhttp.open("GET", 'https://jira.charter.com/rest/api/latest/search?jql=((resolution%20!=%20Incomplete%20OR%20resolution%20!=%20Unresolved)%20AND%20%22Date%20Received%22%20%3E=%20startOfMonth())', true);
+            xmlhttp.send();
+        </script>
+        <p>Take a look article
+            <!-- <a href="https://jira.charter.com/rest/api/latest/search?jql=((resolution%20!=%20Incomplete%20OR%20resolution%20!=%20Unresolved)%20AND%20%22Date%20Received%22%20%3E=%20startOfMonth())">json_demo.txt</a> -->
+        </p>
+    </body>
+</html>

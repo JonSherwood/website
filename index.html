@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" class="mdl-js">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <title>Overall Statistics</title>
+        <link rel="manifest" href="https://getmdl.io/manifest.json">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="files">
+        <link rel="icon" sizes="192x192" href="https://getmdl.io/assets/android-desktop.png">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="files">
+        <link rel="apple-touch-icon" href="https://getmdl.io/assets/ios-desktop.png">
+        <meta name="theme-color" content="#263238">
+        <link rel="shortcut icon" href="https://getmdl.io/assets/favicon.png">
+        <link rel="stylesheet" href="./files/prism-default.css">
+        <link rel="stylesheet" href="./files/material.min.css">
+        <link rel="stylesheet" href="./files/main.css">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- <link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet"> -->
+        <link href="./files/css" type="text/css">
+        <link href="./files/icon" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-pink.min.css"/>
+        <style>
+            #loader {
+                display: block;
+                position: relative;
+                left: 50%;
+                top: 50%;
+                width: 150px;
+                height: 150px;
+                margin: -75px 0 0 -75px;
+                border-radius: 50%;
+                border: transparent solid 3px;
+                border-top-color: #0097A7;
+                animation: spin 2s linear infinite;
+            }
+            .w3-theme {
+                color: #fff !important;
+                background-color: #003a56 !important;
+            }
+            .w3-theme-light {
+                color: #222 !important;
+                background-color: #e8eaf6 !important;
+            }
+            .w3-theme-dark {
+                color: #fff !important;
+                background-color: #13162f !important;
+            }
+            .w3-theme-l5 {
+                color: #000 !important;
+                background-color: #e8eaf6 !important;
+            }
+            .w3-theme-l4 {
+                color: #000 !important;
+                background-color: #c5cae9 !important;
+            }
+            .w3-theme-l3 {
+                color: #000 !important;
+                background-color: #9fa8da !important;
+            }
+            .w3-theme-l2 {
+                color: #fff !important;
+                background-color: #7986cb !important;
+            }
+            .w3-theme-l1 {
+                color: #fff !important;
+                background-color: #5c6bc0 !important;
+            }
+            .w3-theme-d1 {
+                color: #fff !important;
+                background-color: #3949ab !important;
+            }
+            .w3-theme-d2 {
+                color: #fff !important;
+                background-color: #303f9f !important;
+            }
+            .w3-theme-d3 {
+                color: #fff !important;
+                background-color: #283593 !important;
+            }
+            .w3-theme-d4 {
+                color: #fff !important;
+                background-color: #1a237e !important;
+            }
+            .w3-theme-action {
+                color: #fff !important;
+                background-color: #311b92 !important;
+            }
+            .w3-text-theme {
+                color: #1a237e !important;
+            }
+            body {
+                margin: 0;
+            }
+            ul.sidenav {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 20%;
+                /*background: #3949ab !important;*/
+                position: fixed;
+                height: 100%;
+                overflow: auto;
+            }
+            a {
+                display: block;
+                padding: 8px 16px;
+                text-decoration: none;
+                font-weight: 400;
+                font-family: 'Roboto', sans-serif;
+                font-size: 14px;
+                color: #3276b9 !important;
+            }
+            a:hover {
+                text-decoration: none;
+                color: #0080ff !important;
+            }
+            ul.sidenav li a {
+                display: block;
+                /*color: #fff;*/
+                padding: 8px 16px;
+                text-decoration: none;
+                /*letter-spacing: 1px;*/
+                font-weight: 400;
+                font-family: 'Roboto', sans-serif;
+                font-size: 13px;
+                color: #3276b9 !important;
+            }
+            ul.sidenav li a.active {
+                background: transparent;
+                color: #0080ff !important;
+                /*background-color: #1576a4 !important;*/
+                /*color: #fff;*/
+            }
+            /*ul.sidenav li a:hover:not(.active) {
+                background: transparent;
+                color: #0080ff !important;
+
+            }*/
+            div.content {
+                /*margin-left: 25%;
+                padding: 1px 16px;
+                height: 1000px;*/
+            }
+            @media screen and (max-width: 900px) {
+                ul.sidenav {
+                    width: 100%;
+                    height: auto;
+                    position: relative;
+                }
+                ul.sidenav li a {
+                    float: left;
+                    padding: 15px;
+                }
+                div.content {
+                    margin-left: 0;
+                }
+            }
+            @media screen and (max-width: 400px) {
+                ul.sidenav li a {
+                    text-align: center;
+                    float: none;
+                }
+            }
+            p {
+                letter-spacing: 1px;
+                font-family: 'Roboto Condensed', sans-serif;
+                font-size: 14px;
+                color: #555;
+            }
+            h1 {
+                color: #555555;
+                font-size: 30px;
+                /*font-family: 'Roboto', sans-serif;*/
+                font-family: "Roboto Condensed", arial, sans-serif;
+                /*font-size: 50px;*/
+                text-transform: none;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: capitalize;
+                /*font-weight: 800;*/
+                text-transform: uppercase;
+                /*text-align: left;*/
+                opacity: 0.87;
+                border: none;
+            }
+            h2 {
+                border: none !important;
+                color: #444 !important;
+                font-family: 'Lato', sans-serif !important;
+                font-size: 28px;
+                text-transform: capitalize;
+                text-transform: uppercase;
+                line-height: 1.8;
+                opacity: 0.7 !important;
+                text-decoration: none !important;
+                text-align: left !important;
+                padding: 0 !important;
+            }
+            h3 {
+                font-style: normal;
+                font-weight: 300;
+                font-family: "Roboto", arial, sans-serif !important;
+                font-size: 16px;
+                line-height: 1.5em;
+                opacity: 0.87;
+            }
+            h4 {
+                background-color: #555 !important;
+                font-family: "Roboto ", arial, sans-serif !important;
+                font-size: 24px !important;
+                line-height: 1.9em;
+                opacity: 1.0;
+            }
+            h5 {
+                font-family: 'Lato', sans-serif;
+                font-size: 16px;
+                /*font-size: 1.5em;*/
+                line-height: 1.0em;
+                /*opacity: 0.87;*/
+                color: #555;
+            }
+            h6 {
+                letter-spacing: 1px;
+                text-transform: capitalize !important;
+                text-transform: uppercase !important;
+                font-size: 12px !important;
+                font-family: 'Gudea ', sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                text-decoration: none;
+                text-transform: none;
+            }
+            /*.w3-bar-item a {
+                font-family: 'Roboto Condensed';
+                font-size: 12px;
+
+                font-weight: 400;
+                color: #000;
+            }
+            a:hover {
+                text-decoration: none;
+            }
+            a.highlight:hover {
+                color: #ff0000;
+            }
+            a[href^="tel:"] {
+                color: #a4fff7;
+                text-decoration: none;
+            }*/
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="src/js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="src/js/highcharts.js"></script>
+        <script type="text/javascript" src="src/js/modules/data.js"></script>
+        <script type="text/javascript" src="src/js/modules/exporting.js"></script>
+        <!-- <script type="text/javascript" src="src/js/themes/dark-blue.js"></script> -->
+        <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="http://code.highcharts.com/3.0.5/highcharts.js"></script>
+        <script type="text/javascript" src="http://code.highcharts.com/modules/data.js"></script>
+        <script type="text/javascript" src="http://code.highcharts.com/modules/exporting.js"></script> -->
+    </head>
+    <body>
+        <nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card-2" style="background:#e4eaee !important;color:#fff !important; z-index:3;width:250px;" id="mySidebar">
+            <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="javascript:void(0)" onclick="w3_close()" style="height: 100px;">
+                <span style="text-align:left">
+                    <img style=" padding-top: 20px; padding-bottom: 10px;height:66px !important;margin-left: -10px;" src="https://1pvvpp2jnvcy2rs9592n4mtq-wpengine.netdna-ssl.com/wp-content/uploads/2017/04/Charter-Communications-logo.png" style="width:80%;">
+                    <span style="width:50px;"></span>
+                </span>
+            </a>
+            <div style="width:100%;border-top: solid 14px #777;padding-top: 0;"></div>
+            <div style="width:100%;height:100%;background: #fff;">
+                <a class="w3-bar-item w3-button w3-theme-dark " href="#">Home</a>
+                <a class="w3-bar-item w3-button" href="#">Link 1</a>
+                <a class="w3-bar-item w3-button" href="#">Link 2</a>
+                <div>
+                    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Dropdown
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <div id="demo" class="w3-hide">
+                        <a class="w3-bar-item w3-button" href="#">Link</a>
+                        <a class="w3-bar-item w3-button" href="#">Link</a>
+                        <a class="w3-bar-item w3-button" href="#">Link</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+        <div class="w3-main" style="margin-left:250px;">
+            <div id="myTop" class="w3-container w3-top w3-theme w3-large">
+                <i style="color:#fff;padding-top:12px;" class="fa fa-bars w3-button w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+                <header class="w3-container w3-theme" style="padding: 0 0 0 62px">
+                    <h1 class="w3-xxlarge" style="color:#fff;font-weight:normal;letter-spacing:.4px;">Average Response Times</h1>
+                </header>
+                <p style="font-size:12px;color:#ffe8c3; padding: 0 0 10px 62px">
+                    <span style="display:inline;font-size:22px;color:#097eff">
+                        <b>[</b>
+                    </span>
+                    Time Taken To Close Issues Amongst The CTEC Departments
+                    <span style="display:inline;font-size:22px;color:#097eff">
+                        <b>]</b>
+                    </span>
+                </p>
+                <br/>
+            </div>
+            <br/>
+        </div>
+        <div style="padding-top:220px;"></div>
+        <!-- <div class="mdl-layout__container"> -->
+        <div class="col-xs-4" style="background:#000;height:120px;">
+            <h3 style="color:#fff;padding: 18px ;text-align:right;font-weight:bold;">
+                Note:
+            </h3>
+        </div>
+        <div class="col-xs-8">
+            <div style="display: inline;">
+                <br>
+                <p>This is a stub for blah blah.......... These charts are composed from average response time of departments to handle Jira
+                    <a style="display:inline;padding:0;" href="https://jira.charter.com/rest/api/latest/search?jql=((resolution%20!=%20Incomplete%20OR%20resolution%20!=%20Unresolved)%20AND%20%22Date%20Received%22%20%3E=%20startOfMonth())">
+                        issues</a>.
+                </p>
+            </div>
+        </div>
+        <div style="padding:220px 200px; margin: 0 auto;text-align:center;">
+            <div id="myChart" style="width: 600px; height: 400px;"></div>
+        </div>
+        <div style="padding-top:220px;"></div>
+        <footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
+            <ul></ul>
+            <ul class="docs-link-list">
+                <li>
+                    <a class="mdl-color-text--grey-600" href="https://developers.google.com/web/starter-kit/">Web Starter Kit</a>
+                </li>
+                <li>
+                    <a class="mdl-color-text--grey-600" href="https://github.com/google/material-design-lite/issues">Help</a>
+                </li>
+            </ul>
+        </footer>
+    </body>
+    <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+        window.onscroll = function () {
+            myFunction()
+        };
+        function myFunction() {
+            if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+                document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+                document.getElementById("myIntro").classList.add("w3-show-inline-block");
+            } else {
+                document.getElementById("myIntro").classList.remove("w3-show-inline-block");
+                document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+            }
+        }
+        function myAccordion(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className += " w3-theme";
+            } else {
+                x.className = x.className.replace("w3-show", "");
+                x.previousElementSibling.className = x.previousElementSibling.className.replace(" w3-theme", "");
+            }
+        }
+    </script>
+    <script class="code" type="text/javascript">
+        $(function () {
+            Highcharts.Data.prototype.dateFormats['m/d/Y'] = {
+                regex: '^([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{4})$',
+                parser: function (match) {
+                    return Date.UTC(match[3], match[1] - 1, + match[2]);
+                }
+            };
+            $.get('https://raw.githubusercontent.com/JonSherwood/csv/master/data_08a.csv', function (csv) {
+                //PARSER
+                var open = [];
+                var max = [];
+                var lines = csv.split('\n');
+                $.each(lines, function (lineNo, line) {
+                    var items = line.split(',');
+                    if (lineNo != 0) {
+                        open.push([
+                            items[0],
+                            parseFloat(items[1])
+                        ]);
+                        max.push([
+                            items[0],
+                            parseFloat(items[3])
+                        ]);
+                    }
+                });
+                var options = {
+                    colors: [
+                        "#005B06", "#9D3C27"
+                    ],
+                    //data: {    csv: csv },
+                    subtitle: {
+                        text: 'Average Response Times',
+                        style: {
+                            color: '#005B06',
+                            fontSize: '12px'
+                        }
+                    },
+                    title: {
+                        text: 'Effieciency Blah',
+                        style: {
+                            color: '#005B06',
+                            fontSize: '16px'
+                        }
+                    },
+                    xAxis: {
+                        type: 'datetime',
+                        tickInterval: 7 * 24 * 3600 * 1000, // one week
+                        tickWidth: 0,
+                        gridLineWidth: 1,
+                        labels: {
+                            align: 'left'
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Dollars ($)',
+                            style: {
+                                color: '#005B06',
+                                fontSize: '12px'
+                            }
+                        }
+                    },
+                    plotOptions: {
+                        area: {
+                            fillColor: {
+                                linearGradient: {
+                                    x1: 0,
+                                    y1: 0,
+                                    x2: 0,
+                                    y2: 1
+                                },
+                                stops: [
+                                    [
+                                        0, '#00602F'
+                                    ],
+                                    [1, '#FFFFFF']
+                                ]
+                            },
+                            lineWidth: 1,
+                            marker: {
+                                enabled: false
+                            },
+                            shadow: false,
+                            states: {
+                                hover: {
+                                    lineWidth: 1
+                                }
+                            },
+                            threshold: null
+                        }
+                    },
+                    series: [
+                        {
+                            data: open,
+                            name: 'Open',
+                            type: 'area',
+                            lineWidth: 4,
+                            marker: {
+                                radius: 4
+                            }
+                        }, {
+                            data: max,
+                            name: 'Max',
+                            type: 'spline',
+                            lineWidth: 4,
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    ]
+                };
+                $('#myChart').highcharts(options);
+            });
+        });
+    </script>
+</html>
